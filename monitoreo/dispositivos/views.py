@@ -24,7 +24,7 @@ def panel_dispositivos(request):
         {"nombre": "sensor presion", "consumo": 180},
     ]
 
-    consumo_maximo = 121
+    consumo_maximo = 150
 
     return render(request, "dispositivos/dispositivos.html", {
         "dispositivos": dispositivos,
