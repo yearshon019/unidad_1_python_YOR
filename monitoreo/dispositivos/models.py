@@ -23,3 +23,20 @@ class Dispositivo(models.Model):
 
     def __str__(self):
         return self.nombre
+
+class Medicion(models.Model):
+    fecha = models.DateTimeField()
+    consumo_registrado = models.IntegerField()
+    dispositivo = models.ForeignKey(Dispositivo, on_delete=models.CASCADE, null=True)
+
+    def __str__(self):
+        return f"Medicion del dispositivo {self.dispositivo} el la fecha {self.fecha} con consumo de {self.consumo_registrado}"
+    
+class Alerta(models.Model):
+    mensaje = models.CharField(max_length=250)
+    nivel_alerta = models.CharField(max_length=50)
+    fecha = models.DateTimeField(auto_now_add=True)
+    dispositivo = models.ForeignKey(Dispositivo, on_delete=models.CASCADE, null=True)
+
+    def __str__(self):
+        return f"Alerta: {self.mensaje} - nivel de alerta: {self.nivel_alerta} - dispositivo: {self.dispositivo} - fecha: {self.fecha}"
