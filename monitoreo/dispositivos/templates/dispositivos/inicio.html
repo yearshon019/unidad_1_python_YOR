@@ -7,9 +7,15 @@
     <title>Bienvenido</title>
 </head>
 <body>
-    <h1>Hola {{ contexto.nombre}}</h1>
-    {% for p in productos %}
-        <p>{{ p.nombre }} - {{ p.precio }}</p>
-    {% endfor %}
+    <ul>
+        {% for d in dispositivos %}
+            <li>
+                {{ d.nombre }} - {{ d.categoria }} - {{ d.categoria.descripcion }}
+                ir a <a href="{% url 'dispositivo' d.id %}">Detalles</a>
+            </li>
+        {% empty %}
+            <li>No hay dispositivos.</li>
+        {% endfor %}
+    </ul>
 </body>
 </html>

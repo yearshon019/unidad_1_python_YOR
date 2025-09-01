@@ -1,9 +1,9 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Categoria, Zona, Dispositivo
+from .models import Categoria, Zona, Dispositivo, Alerta, Medicion
 
-admin.site.register([Categoria, Zona])
+admin.site.register([Categoria, Zona, Alerta, Medicion])
 
 @admin.register(Dispositivo)
 class DispositivoAdmin(admin.ModelAdmin):
