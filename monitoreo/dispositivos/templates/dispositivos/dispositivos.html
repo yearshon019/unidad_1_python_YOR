@@ -2,23 +2,24 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Panel de dispositivos</title>
+    <title>{{ dispositivo.nombre }}</title>
 </head>
 <body>
-    <h1>Panel de dispositivos</h1>
-    <p>Consumo máximo permitido: {{ consumo_maximo }} W</p>
-    <ul>
-        {% for dispositivo in dispositivos %}
-            {% if dispositivo.consumo <= consumo_maximo %}
-                <li style="color: green;">
-                     {{ dispositivo.nombre }} - {{ dispositivo.consumo }} W - Correcto
-                </li>
-            {% else %}
-                <li style="color: red;">
-                     {{ dispositivo.nombre }} - {{ dispositivo.consumo }} W - Exceso
-                </li>
-            {% endif %}
-        {% endfor %}
-    </ul>
+    <h1>Panel de Dispositivo</h1>
+
+    <p><strong>Nombre:</strong> {{ dispositivo.nombre }}</p>
+    <p><strong>Categoría:</strong> {{ dispositivo.categoria.nombre }}</p>
+    <p><strong>Descripción categoría:</strong> {{ dispositivo.categoria.descripcion }}</p>
+    <p><strong>Zona:</strong> {{ dispositivo.zona.nombre }} ({{ dispositivo.zona.ubicacion }})</p>
+    <p><strong>Consumo máximo:</strong> {{ dispositivo.consumo_maximo }} W</p>
+    <p><strong>Estado:</strong> 
+        {% if dispositivo.estado %}
+            ✅ Activo
+        {% else %}
+            ❌ Inactivo
+        {% endif %}
+    </p>
+
+    <p><a href="{% url 'dispositivos' %}">← Volver al listado</a></p>
 </body>
 </html>
