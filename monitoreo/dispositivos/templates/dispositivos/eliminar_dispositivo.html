@@ -1,0 +1,14 @@
+{% extends "dispositivos/base.html" %}
+
+{% block content %}
+
+    <h2> Eliminar Dispositivos </h2>
+    <p>Estas seguro de eliminar el dispositivo: <strong>{{ dispositivo.nombre }}</strong>?</p>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+        <a href="{% url 'dispositivos'}" class="btn btn-secondary"> cancelar</a>
+    </form>
+{% endblock %}
